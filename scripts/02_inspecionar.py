@@ -5,7 +5,6 @@ import pandas as pd
 pasta = Path("data/raw")
 zip_path = pasta / "material_2026_09.csv.zip"
 
-
 # Extrair o arquivo sem apagar o ZIP original
 with ZipFile(zip_path, "r") as arquivo_zip:
     print("Arquivos dentro do ZIP:")

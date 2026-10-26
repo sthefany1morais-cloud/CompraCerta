@@ -57,6 +57,9 @@ Na tabela `core.item_compra`, os 100.957 registros possuem `id_fornecedor` e `id
 * Entre os itens analisados estão um dispositivo plástico para alívio da dor associada a injeções, um monitor multiparâmetro, um conjunto para prótese dental, uma mesa auxiliar hospitalar, um motor odontológico e um rodízio para mocho.
 * A comparação entre `staging.material_original` e `core.item_compra` confirmou que os preços desses seis itens são iguais nas duas tabelas. Portanto, os valores não foram introduzidos pelo processo de tratamento.
 * Os valores são considerados **possíveis anomalias de preço**, e não erros confirmados. Ainda é necessário consultar documentação adicional para verificar se decorrem de erros de registro, problemas de unidade de medida ou outra situação.
+* A investigação confirmou seis códigos de órgão com nomes divergentes (`15000`, `22203`, `29208`, `30202`, `94268` e `95571`). Os diferentes nomes também aparecem na fonte original e podem refletir abreviações, diferenças de formatação ou mudanças de denominação institucional.
+* Foi identificado o código UASG `981981`, associado aos nomes `MPB - PREFEITURA MUNICIPAL DE CAMPINA GRANDE` e `PREFEITURA MUNICIPAL DE CAMPINA GRANDE - PB`. Ambos aparecem na fonte original e parecem se referir à mesma instituição.
+* As divergências foram preservadas. Qualquer padronização deverá utilizar regras documentadas e, quando necessário, validação por fonte oficial, sem sobrescrever os dados originais.
 
 ## 5. Regras de tratamento
 

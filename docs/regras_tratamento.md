@@ -62,3 +62,17 @@ Após implementar as regras, comparar os dados antes e depois do tratamento, reg
 ## 9. Princípio geral
 
 Nenhum registro deverá ser excluído ou ter seu significado alterado sem uma regra explícita, justificativa e validação dos resultados.
+
+### 10. Pendências de localidade
+
+Foram identificadas 12 unidades compradoras sem associação com um registro da tabela `core.localidade`. Na fonte original,
+esses registros não apresentam informações suficientes de município e código municipal para estabelecer uma associação segura.
+
+**Regra de tratamento:**
+
+* Manter `id_localidade` como `NULL` até que exista uma fonte confiável para confirmar a localidade.
+* Preservar os dados originais das unidades compradoras.
+* Não criar localidades fictícias nem inferir municípios sem evidência suficiente.
+* Preservar o estado `EX` para unidades localizadas no exterior, sem convertê-lo para uma UF brasileira.
+
+Esses registros devem permanecer documentados como pendências de qualidade dos dados.

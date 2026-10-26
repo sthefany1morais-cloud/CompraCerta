@@ -98,3 +98,20 @@ Na tabela `core.item_compra`, os 100.957 registros possuem `id_fornecedor` e `id
 * Revisar os códigos de classificação e julgamento com base em documentação oficial.
 * Desenvolver e testar o processo de tratamento dos dados para que possa ser reproduzido.
 * Implementar as funcionalidades de comparação de preços do CompraCerta.
+
+### 8. Critérios de julgamento
+
+A coluna `criterio_julgamento`, da tabela `staging.material_original`, apresenta seis valores distintos: `0`, `1`, `2`, `V`, `D` e registros em branco.
+
+Foram identificados 15 registros com valores compostos apenas por espaços, que devem ser tratados como valores ausentes, preservando-se os dados originais.
+
+A análise do campo `percentual_maior_desconto` identificou os seguintes padrões:
+
+* O código `0` aparece em 15.552 registros, todos com percentual de desconto igual a zero.
+* O código `V` aparece em 33.628 registros, todos com percentual de desconto igual a zero.
+* O código `D` aparece em 70 registros, todos com percentuais de desconto preenchidos e variados.
+
+Essas associações são evidências exploratórias, mas não confirmam, por si só, o significado oficial dos códigos. Até que a documentação oficial seja validada, os valores devem ser preservados sem substituições ou classificações presumidas. Os 15 registros em branco devem ser identificados como ausentes nas análises.
+
+**Pendência:** confirmar o significado dos códigos `0`, `1`, `2`, `V` e `D` em documentação oficial do Compras.gov.br e registrar as regras de tratamento correspondentes.
+

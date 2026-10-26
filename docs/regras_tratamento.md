@@ -76,3 +76,17 @@ esses registros não apresentam informações suficientes de município e códig
 * Preservar o estado `EX` para unidades localizadas no exterior, sem convertê-lo para uma UF brasileira.
 
 Esses registros devem permanecer documentados como pendências de qualidade dos dados.
+
+### 11. Tratamento de preços zerados
+
+Foram identificados quatro registros com `preco_unitario = 0` e `quantidade = 0` na base analisada. Todos pertencem à mesma compra e ao mesmo fornecedor.
+
+**Regra de tratamento:**
+
+* Preservar os quatro registros no banco de dados.
+* Não substituir os valores por preços estimados.
+* Excluir esses registros dos cálculos de comparação de preços, identificando-os como não elegíveis para essa análise.
+* Manter os valores originais disponíveis para auditoria e investigações futuras.
+
+Essa regra evita que valores zerados distorçam os resultados da comparação de preços sem eliminar informações da fonte original.
+

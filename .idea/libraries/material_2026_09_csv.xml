@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="material_2026_09.csv">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/data/raw/material_2026_09.csv.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

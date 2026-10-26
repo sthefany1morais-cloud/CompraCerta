@@ -1,1 +1,15 @@
-data/raw/extraido/material_2026_09.csv
+# Ambiente Python
+
+.venv/
+**pycache**/
+*.py[cod]
+
+# Arquivos de dados brutos
+
+data/raw/
+
+# Arquivos temporários
+
+*.log
+.DS_Store
+Thumbs.db

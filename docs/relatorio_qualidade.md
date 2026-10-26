@@ -60,6 +60,7 @@ Na tabela `core.item_compra`, os 100.957 registros possuem `id_fornecedor` e `id
 * A investigação confirmou seis códigos de órgão com nomes divergentes (`15000`, `22203`, `29208`, `30202`, `94268` e `95571`). Os diferentes nomes também aparecem na fonte original e podem refletir abreviações, diferenças de formatação ou mudanças de denominação institucional.
 * Foi identificado o código UASG `981981`, associado aos nomes `MPB - PREFEITURA MUNICIPAL DE CAMPINA GRANDE` e `PREFEITURA MUNICIPAL DE CAMPINA GRANDE - PB`. Ambos aparecem na fonte original e parecem se referir à mesma instituição.
 * As divergências foram preservadas. Qualquer padronização deverá utilizar regras documentadas e, quando necessário, validação por fonte oficial, sem sobrescrever os dados originais.
+* A investigação das 12 unidades compradoras sem associação com `core.localidade` confirmou que os campos `municipio` e `codigo_municipio` também estão ausentes na fonte original para todos esses registros. O campo `estado` está preenchido em 11 casos; a unidade correspondente à Comissão Naval Brasileira em Washington apresenta o valor `EX`. Como não há evidência suficiente para determinar os municípios e seus códigos, os registros permanecem sem associação de localidade, sem preenchimento por inferência.
 
 ## 5. Regras de tratamento
 

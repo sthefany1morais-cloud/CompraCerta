@@ -201,3 +201,13 @@ A comparação com a tabela de origem `staging.material_original` confirmou que 
 A existência de preços elevados pode indicar situações que exigem investigação, mas não é suficiente, isoladamente, para afirmar que os valores estejam incorretos.
 
 **Decisão de tratamento:** os preços e as quantidades foram preservados, sem alterações automáticas. Esses registros permanecem como pontos de atenção para validação, considerando a descrição dos itens, as unidades de fornecimento e o contexto de cada compra.
+
+### 16. Preços unitários extremamente baixos
+
+Foram identificados 24 itens com preço unitário superior a zero e inferior a R$ 0,01.
+
+A comparação com a tabela de origem `staging.material_original` confirmou que os preços desses itens já estavam presentes nos dados originais. A verificação das unidades de fornecimento também mostrou correspondência entre os registros tratados e a fonte.
+
+Os casos incluem licenças de software, equipamentos, alimentos comercializados por quilograma e sementes comercializadas por grama. Alguns valores são extremamente baixos em relação às descrições e às unidades informadas, podendo indicar inconsistências nos registros originais.
+
+**Decisão de tratamento:** os preços, as quantidades e as unidades de fornecimento foram preservados. Não foram realizadas correções automáticas, pois os dados disponíveis não permitem determinar os valores corretos. Esses itens permanecem como pontos de atenção para validação.

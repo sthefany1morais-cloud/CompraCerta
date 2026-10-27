@@ -115,3 +115,15 @@ Essas associações são evidências exploratórias, mas não confirmam, por si 
 
 **Pendência:** confirmar o significado dos códigos `0`, `1`, `2`, `V` e `D` em documentação oficial do Compras.gov.br e registrar as regras de tratamento correspondentes.
 
+### 9. Análise das unidades de medida
+
+Foram analisados os campos `sigla_unidade_medida` e `nome_unidade_medida` da tabela `core.item_compra`, que contém 100.957 registros.
+
+Os resultados identificaram:
+
+* 85.328 registros sem sigla de unidade de medida;
+* 100.957 registros sem nome de unidade de medida.
+
+A investigação na tabela de origem `staging.material_original` confirmou que os nomes das unidades de medida também estão ausentes na fonte original. Embora existam siglas preenchidas em parte dos registros, não foi identificada uma referência confiável que permita reconstruir os nomes com segurança.
+
+**Decisão de tratamento:** os valores ausentes foram mantidos, sem preenchimento por suposição. O preenchimento futuro depende de uma fonte de referência confiável para validar as correspondências entre siglas e nomes.

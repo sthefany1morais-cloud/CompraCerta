@@ -171,3 +171,13 @@ As diferenças incluem variações de grafia, abreviações e nomes empresariais
 Também foram observados identificadores genéricos, como `000000000` e `ESTRANGEIRO`, além de identificadores alfanuméricos e numéricos com tamanhos diferentes dos formatos de CPF e CNPJ.
 
 **Decisão de tratamento:** os identificadores e nomes originais foram preservados. Não foram realizadas unificações automáticas de fornecedores, alterações de identificadores ou exclusões de registros. Os casos identificados permanecem como pontos de atenção para eventual validação com uma fonte cadastral confiável.
+
+### 13. Datas de atualização e resultado anteriores à data da compra
+
+Foi identificada uma inconsistência temporal em 1.768 itens, distribuídos em 256 compras. Nesses registros, tanto a data do resultado quanto a data de atualização do item são anteriores à data da compra registrada em `core.compra`.
+
+A diferença entre a data da compra e a data de atualização varia de 2 a 345 dias, com média de aproximadamente 119 dias.
+
+A comparação com a tabela de origem `staging.material_original` confirmou que as datas dos 1.768 itens são iguais às originais. Portanto, a inconsistência já estava presente na fonte de dados.
+
+**Decisão de tratamento:** as datas foram preservadas, sem alterações automáticas, pois não há evidências suficientes para determinar qual data está incorreta. Os registros devem ser considerados pontos de atenção em análises temporais.

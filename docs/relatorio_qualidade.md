@@ -157,3 +157,17 @@ Os resultados foram:
 * **Intervalo médio:** 8,77 dias.
 
 **Conclusão:** todas as atualizações ocorreram depois da data da compra, com intervalos de 1 a 39 dias. Esses resultados, isoladamente, não indicam erros. Os registros foram preservados, sem alterações.
+
+### 12. Divergências nos identificadores de fornecedores
+
+Foi realizada uma análise dos identificadores dos fornecedores na tabela `core.fornecedor`.
+
+Foram identificados 10.309 registros com identificadores numéricos de 14 dígitos, 457 com identificadores numéricos de 11 dígitos, 14 com identificadores numéricos de outros tamanhos e 93 com identificadores alfanuméricos.
+
+Entre os identificadores numéricos de 14 dígitos, foram encontrados 104 identificadores associados a nomes distintos, envolvendo 208 registros. A verificação na tabela de origem `staging.material_original` confirmou que essas divergências já estavam presentes nos dados originais.
+
+As diferenças incluem variações de grafia, abreviações e nomes empresariais distintos associados ao mesmo identificador. Não foi possível determinar, apenas com os dados disponíveis, qual nome deve ser considerado correto em cada caso.
+
+Também foram observados identificadores genéricos, como `000000000` e `ESTRANGEIRO`, além de identificadores alfanuméricos e numéricos com tamanhos diferentes dos formatos de CPF e CNPJ.
+
+**Decisão de tratamento:** os identificadores e nomes originais foram preservados. Não foram realizadas unificações automáticas de fornecedores, alterações de identificadores ou exclusões de registros. Os casos identificados permanecem como pontos de atenção para eventual validação com uma fonte cadastral confiável.

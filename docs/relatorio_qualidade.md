@@ -223,3 +223,13 @@ Entre os itens analisados, foram observados valores elevados associados a descri
 A comparação entre `core.item_compra` e `staging.material_original` confirmou que os seis preços já estavam presentes na fonte original, não tendo sido introduzidos pelo tratamento dos dados.
 
 **Decisão de tratamento:** os valores e os registros foram preservados. Os itens foram classificados como possíveis anomalias de preço, pendentes de validação com documentação da contratação ou outra fonte confiável. Não foram realizadas alterações ou exclusões automáticas.
+
+### 18. Descrições repetidas no catálogo de itens
+
+Na análise de `core.catalogo_item`, foram encontrados dois códigos de catálogo associados à mesma descrição e à mesma classificação: `633085` e `633086`, ambos referentes a esponja de limpeza de lã de aço, formato circular e abrasividade leve.
+
+O código `633085` aparece em um item de compra, enquanto o código `633086` aparece em dez itens distribuídos por oito compras.
+
+A consulta à tabela de origem `staging.material_original` confirmou a presença dos dois códigos nos dados originais: um registro para `633085` e dez para `633086`. Cada código apresenta uma única descrição distinta.
+
+**Decisão de tratamento:** os códigos e registros foram preservados. O caso foi classificado como possível duplicidade cadastral preexistente na fonte, pendente de validação com uma referência oficial do catálogo. Não foram realizadas unificações ou exclusões automáticas.

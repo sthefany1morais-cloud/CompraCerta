@@ -191,3 +191,13 @@ A comparação com a tabela de origem `staging.material_original` confirmou que 
 Os registros incluem medicamentos e outros produtos adquiridos em grandes volumes. A magnitude das quantidades, isoladamente, não é suficiente para determinar que existam erros, pois depende da unidade de fornecimento e do contexto de cada compra.
 
 **Decisão de tratamento:** as quantidades e os preços foram preservados, sem alterações automáticas. Esses registros permanecem como pontos de atenção para análises de plausibilidade, considerando as descrições e unidades de fornecimento.
+
+### 15. Preços unitários elevados
+
+Foi realizada uma verificação de preços unitários iguais ou superiores a R$ 1 milhão na tabela `core.item_compra`. Foram identificados 53 itens nessa condição.
+
+A comparação com a tabela de origem `staging.material_original` confirmou que os preços unitários e as quantidades desses 53 itens correspondem aos valores originais.
+
+A existência de preços elevados pode indicar situações que exigem investigação, mas não é suficiente, isoladamente, para afirmar que os valores estejam incorretos.
+
+**Decisão de tratamento:** os preços e as quantidades foram preservados, sem alterações automáticas. Esses registros permanecem como pontos de atenção para validação, considerando a descrição dos itens, as unidades de fornecimento e o contexto de cada compra.

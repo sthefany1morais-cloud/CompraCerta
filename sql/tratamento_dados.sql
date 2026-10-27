@@ -49,3 +49,21 @@ WHERE criterio_julgamento IS NOT NULL
 SELECT COUNT(*) AS total_registros
 FROM core.item_compra;
 
+-- Tratamento: preenchimento de nomes de unidades de fornecimento.
+-- Os nomes foram inferidos a partir de correspondências unicas
+-- entre siglas e nomes encontrados nos dados originais.
+-- Registros sem correspondencia unica permaneceram sem preenchimento.
+-- Validar as correspondencias com uma fonte oficial quando disponivel.
+
+SELECT
+    COUNT(*) AS total_registros,
+    COUNT(*) FILTER (
+        WHERE NULLIF(BTRIM(nome_unidade_fornecimento), '') IS NOT NULL
+    ) AS nomes_preenchidos,
+    COUNT(*) FILTER (
+        WHERE NULLIF(BTRIM(nome_unidade_fornecimento), '') IS NULL
+    ) AS nomes_ainda_vazios
+FROM core.item_compra;
+
+
+

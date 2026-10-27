@@ -181,3 +181,13 @@ A diferença entre a data da compra e a data de atualização varia de 2 a 345 d
 A comparação com a tabela de origem `staging.material_original` confirmou que as datas dos 1.768 itens são iguais às originais. Portanto, a inconsistência já estava presente na fonte de dados.
 
 **Decisão de tratamento:** as datas foram preservadas, sem alterações automáticas, pois não há evidências suficientes para determinar qual data está incorreta. Os registros devem ser considerados pontos de atenção em análises temporais.
+
+### 14. Quantidades elevadas nos itens
+
+Foi realizada uma verificação de quantidades iguais ou superiores a 1 milhão na tabela `core.item_compra`. Foram identificados 300 itens nessa condição.
+
+A comparação com a tabela de origem `staging.material_original` confirmou que as quantidades e os preços unitários desses 300 itens correspondem aos valores originais.
+
+Os registros incluem medicamentos e outros produtos adquiridos em grandes volumes. A magnitude das quantidades, isoladamente, não é suficiente para determinar que existam erros, pois depende da unidade de fornecimento e do contexto de cada compra.
+
+**Decisão de tratamento:** as quantidades e os preços foram preservados, sem alterações automáticas. Esses registros permanecem como pontos de atenção para análises de plausibilidade, considerando as descrições e unidades de fornecimento.

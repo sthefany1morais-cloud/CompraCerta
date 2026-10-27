@@ -211,3 +211,15 @@ A comparação com a tabela de origem `staging.material_original` confirmou que 
 Os casos incluem licenças de software, equipamentos, alimentos comercializados por quilograma e sementes comercializadas por grama. Alguns valores são extremamente baixos em relação às descrições e às unidades informadas, podendo indicar inconsistências nos registros originais.
 
 **Decisão de tratamento:** os preços, as quantidades e as unidades de fornecimento foram preservados. Não foram realizadas correções automáticas, pois os dados disponíveis não permitem determinar os valores corretos. Esses itens permanecem como pontos de atenção para validação.
+
+### 17. Investigação de preços extremos em uma compra
+
+Foi investigada a compra `92962105000012026`, registrada em 10/09/2026, cujo objeto prevê o registro de preços para futura aquisição de equipamentos médicos, odontológicos e materiais hospitalares.
+
+A compra contém seis itens, todos com quantidade registrada igual a 1, totalizando R$ 142.893.600,00. Os preços unitários variam de R$ 1.800.000,00 a R$ 95.929.000,00.
+
+Entre os itens analisados, foram observados valores elevados associados a descrições como rodízio para mocho odontológico, mesa auxiliar hospitalar e motor elétrico odontológico. Esses casos merecem verificação adicional, mas os dados disponíveis não permitem confirmar que os preços estejam incorretos.
+
+A comparação entre `core.item_compra` e `staging.material_original` confirmou que os seis preços já estavam presentes na fonte original, não tendo sido introduzidos pelo tratamento dos dados.
+
+**Decisão de tratamento:** os valores e os registros foram preservados. Os itens foram classificados como possíveis anomalias de preço, pendentes de validação com documentação da contratação ou outra fonte confiável. Não foram realizadas alterações ou exclusões automáticas.

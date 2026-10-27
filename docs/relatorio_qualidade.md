@@ -141,3 +141,19 @@ A investigação na fonte original `staging.material_original` identificou três
 Esses resultados indicam que os valores investigados não identificam individualmente todos os fornecedores aos quais estão associados. A presença desses valores também foi confirmada na fonte original, portanto não há evidência de que tenham sido criados pelo tratamento dos dados.
 
 **Decisão de tratamento:** os registros foram preservados, sem exclusão ou criação de identificadores artificiais. A correção desses casos depende de uma fonte de referência confiável que permita identificar individualmente os fornecedores.
+
+### 11. Verificação das datas de compra e atualização
+
+A tabela `core.compra` foi analisada para verificar a relação entre `data_compra` e `data_hora_atualizacao_compra`.
+
+Os resultados foram:
+
+* **Registros analisados:** 8.208.
+* **Atualizações anteriores à data da compra:** 0.
+* **Atualizações no mesmo dia da compra:** 0.
+* **Atualizações posteriores à data da compra:** 8.208.
+* **Menor intervalo entre compra e atualização:** 1 dia.
+* **Maior intervalo:** 39 dias.
+* **Intervalo médio:** 8,77 dias.
+
+**Conclusão:** todas as atualizações ocorreram depois da data da compra, com intervalos de 1 a 39 dias. Esses resultados, isoladamente, não indicam erros. Os registros foram preservados, sem alterações.

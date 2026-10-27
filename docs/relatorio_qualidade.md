@@ -127,3 +127,17 @@ Os resultados identificaram:
 A investigação na tabela de origem `staging.material_original` confirmou que os nomes das unidades de medida também estão ausentes na fonte original. Embora existam siglas preenchidas em parte dos registros, não foi identificada uma referência confiável que permita reconstruir os nomes com segurança.
 
 **Decisão de tratamento:** os valores ausentes foram mantidos, sem preenchimento por suposição. O preenchimento futuro depende de uma fonte de referência confiável para validar as correspondências entre siglas e nomes.
+
+### 10. Investigação de identificadores repetidos de fornecedores
+
+Durante a análise da tabela `core.fornecedor`, foram identificados 10.873 registros e 10.757 identificadores distintos, indicando a existência de identificadores repetidos.
+
+A investigação na fonte original `staging.material_original` identificou três valores associados a múltiplos fornecedores diferentes:
+
+* **`000000000`:** associado a sete nomes distintos de fornecedores.
+* **`ESTRANGEIRO`:** associado a três nomes distintos de fornecedores.
+* **`TMA6748F62`:** associado a quatro nomes distintos de fornecedores.
+
+Esses resultados indicam que os valores investigados não identificam individualmente todos os fornecedores aos quais estão associados. A presença desses valores também foi confirmada na fonte original, portanto não há evidência de que tenham sido criados pelo tratamento dos dados.
+
+**Decisão de tratamento:** os registros foram preservados, sem exclusão ou criação de identificadores artificiais. A correção desses casos depende de uma fonte de referência confiável que permita identificar individualmente os fornecedores.

@@ -233,3 +233,25 @@ O código `633085` aparece em um item de compra, enquanto o código `633086` apa
 A consulta à tabela de origem `staging.material_original` confirmou a presença dos dois códigos nos dados originais: um registro para `633085` e dez para `633086`. Cada código apresenta uma única descrição distinta.
 
 **Decisão de tratamento:** os códigos e registros foram preservados. O caso foi classificado como possível duplicidade cadastral preexistente na fonte, pendente de validação com uma referência oficial do catálogo. Não foram realizadas unificações ou exclusões automáticas.
+
+### 19. Validação dos relacionamentos entre tabelas
+
+Foram realizadas consultas de verificação de correspondência entre as tabelas do schema `core`.
+
+### 19.1 Itens de compra
+
+* Total de itens verificados: 100.957.
+* Itens sem fornecedor correspondente: 0.
+* Itens sem registro correspondente no catálogo: 0.
+
+### 19.2 Unidades compradoras
+
+* Total de unidades compradoras verificadas: 2.414.
+* Unidades com órgão informado, mas sem correspondência: 0.
+* Unidades com localidade informada, mas sem correspondência: 0.
+
+### 19.3 Conclusão
+
+Nas verificações realizadas, todos os itens de compra encontraram correspondência nas tabelas de fornecedores e catálogo. Da mesma forma, não foram encontradas referências inválidas a órgãos ou localidades nas unidades compradoras que possuíam esses identificadores preenchidos.
+
+Esses resultados indicam consistência nas correspondências verificadas. Eles não substituem a conferência das restrições de chave estrangeira efetivamente cadastradas no PostgreSQL.

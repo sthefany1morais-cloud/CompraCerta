@@ -97,7 +97,6 @@ Na tabela `core.item_compra`, os 100.957 registros possuem `id_fornecedor` e `id
 * Investigar possibilidades de associação das 12 unidades compradoras sem localidade, sem inferir informações sem evidência suficiente.
 * Revisar os códigos de classificação e julgamento com base em documentação oficial.
 * Desenvolver e testar o processo de tratamento dos dados para que possa ser reproduzido.
-* Implementar as funcionalidades de comparação de preços do CompraCerta.
 
 ### 8. Critérios de julgamento
 
@@ -296,3 +295,21 @@ Foi executada uma validação do arquivo `material_2026_09.csv` utilizando Pytho
 | `criterio_julgamento`        |                 15 |
 
 **Conclusão:** a validação confirmou a dimensão esperada do arquivo, sem duplicatas completas e sem valores ausentes nos campos de identificador e preço unitário examinados. As ausências restantes devem ser tratadas conforme as regras documentadas, sem inventar informações ou alterar os dados originais.
+
+### 22. Validação automatizada do fluxo de processamento
+
+O fluxo `python -m src.processar` executa as etapas de extração, transformação e validação. A extração reutiliza o CSV já extraído, sem sobrescrever o arquivo original. A transformação processa os dados em memória, padroniza os nomes das colunas, converte campos vazios ou compostos por espaços em valores ausentes, converte `preco_unitario` e `quantidade` para valores numéricos e adiciona dois indicadores de sinalização.
+
+Resultados da execução:
+
+* Registros processados: 100.957.
+* Colunas na fonte original: 42.
+* Colunas no DataFrame após a transformação: 44, incluindo `preco_ou_quantidade_zero` e `preco_e_quantidade_zero`.
+* Identificadores `id_item_compra` ausentes: 0.
+* Identificadores `id_item_compra` distintos: 100.957.
+* Linhas completamente duplicadas no DataFrame transformado: 0.
+* Registros com preço ou quantidade iguais a zero: 4.
+* Registros com preço e quantidade iguais a zero: 4.
+* Alterações no banco de dados durante a execução: nenhuma.
+
+As duas colunas de sinalização identificam registros que precisam de atenção, sem excluir registros ou modificar o arquivo CSV original. A execução confirma o funcionamento integrado das etapas de extração, transformação e validação. Tratamentos que dependem de referências externas, como resolver divergências de nomes e associar localidades sem informações suficientes, continuam sujeitos a análise. A ausência de `nome_unidade_medida` nos 100.957 registros permanece uma limitação da fonte original.

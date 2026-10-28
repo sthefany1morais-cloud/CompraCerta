@@ -268,3 +268,31 @@ Os dois registros apresentam a mesma descrição — *ESPONJA LIMPEZA, MATERIAL:
 **Análise:** a igualdade das descrições e das classificações indica um forte candidato a duplicidade cadastral. Entretanto, não é possível concluir apenas com esses dados que os registros devam ser unificados.
 
 **Tratamento adotado:** os dois códigos foram preservados. A ocorrência foi documentada para investigação, evitando a unificação automática de registros sem confirmação de equivalência no catálogo oficial.
+
+### 21. Validação automatizada do arquivo de origem
+
+Foi executada uma validação do arquivo `material_2026_09.csv` utilizando Python e pandas.
+
+**Resultados gerais:**
+
+* Registros analisados: 100.957.
+* Colunas identificadas: 42.
+* Linhas completamente duplicadas: 0.
+* Identificadores de item ausentes: 0.
+* Preços unitários ausentes: 0.
+
+**Valores ausentes identificados na origem:**
+
+| Campo                        | Registros ausentes |
+| ---------------------------- | -----------------: |
+| `nome_unidade_medida`        |            100.957 |
+| `sigla_unidade_medida`       |             85.328 |
+| `nome_unidade_fornecimento`  |             28.085 |
+| `sigla_unidade_fornecimento` |             23.424 |
+| `codigo_municipio`           |                672 |
+| `municipio`                  |                672 |
+| `poder`                      |                630 |
+| `marca`                      |                609 |
+| `criterio_julgamento`        |                 15 |
+
+**Conclusão:** a validação confirmou a dimensão esperada do arquivo, sem duplicatas completas e sem valores ausentes nos campos de identificador e preço unitário examinados. As ausências restantes devem ser tratadas conforme as regras documentadas, sem inventar informações ou alterar os dados originais.

@@ -1,44 +1,47 @@
-from pathlib import Path
+from src.transform import transformar_dados
+
+
 import pandas as pd
 
-pasta_dados = Path("data") / "raw" / "extraido"
-arquivo_csv = pasta_dados / "material_2026_09.csv"
 
-
-def validar_dados():
-    if not arquivo_csv.exists():
-        print("Arquivo CSV nao encontrado:", arquivo_csv)
+def validar_dados(dados):
+    if dados is None:
+        print("Validacao interrompida: dados indisponiveis.")
         return
 
-    dados = pd.read_csv(
-        arquivo_csv,
-        sep=";",
-        dtype=str,
-        encoding="utf-8",
-        low_memory=False
-    )
-
-    print("RELATORIO DE VALIDACAO")
+    print("\nRELATORIO DE VALIDACAO")
     print("----------------------")
     print("Total de linhas:", len(dados))
     print("Total de colunas:", len(dados.columns))
 
-    dados_limpos = dados.replace(r"^\s*$", pd.NA, regex=True)
-
-    print("\nValores ausentes por coluna:")
-    ausentes = dados_limpos.isna().sum()
-    print(ausentes[ausentes > 0].sort_values(ascending=False))
-
-    print("\nLinhas duplicadas completas:", dados.duplicated().sum())
-
     print(
         "\nIdentificadores de item ausentes:",
-        dados_limpos["id_item_compra"].isna().sum()
+        int(dados["id_item_compra"].isna().sum())
     )
 
     print(
-        "\nPrecos unitarios ausentes:",
-        dados_limpos["preco_unitario"].isna().sum()
+        "Identificadores de item distintos:",
+        int(dados["id_item_compra"].nunique())
     )
 
+    print(
+        "\nLinhas duplicadas completas:",
+        int(dados.duplicated().sum())
+    )
+
+    print("\nValores ausentes por coluna:")
+    ausentes = dados.isna().sum()
+    print(ausentes[ausentes > 0].sort_values(ascending=False))
+
+    print(
+        "\nRegistros com preco e quantidade zero:",
+        int(dados["preco_e_quantidade_zero"].sum())
+    )
+
+    print(
+        "Registros com preco ou quantidade zero:",
+        int(dados["preco_ou_quantidade_zero"].sum())
+    )
+
+    print("\nValidacao concluida.")
     return dados

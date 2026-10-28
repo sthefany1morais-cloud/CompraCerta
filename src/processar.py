@@ -19,7 +19,7 @@ def processar_dados():
         return
 
     print("\nETAPA 3 — VALIDAÇÃO")
-    dados_validados = validar_dados()
+    dados_validados = validar_dados(dados)
 
     if dados_validados is None:
         print("Processamento interrompido na validação.")

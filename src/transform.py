@@ -23,10 +23,39 @@ def transformar_dados():
         for coluna in dados.columns
     ]
 
-    print("Arquivo carregado para analise.")
+    # Converte valores vazios ou compostos por espaços em ausentes.
+    dados = dados.replace(r"^\s*$", pd.NA, regex=True)
+
+    # Converte campos numéricos para permitir validações.
+    for coluna in ["preco_unitario", "quantidade"]:
+        if coluna in dados.columns:
+            dados[coluna] = pd.to_numeric(
+                dados[coluna],
+                errors="coerce"
+            )
+
+    # Sinaliza registros com preço ou quantidade iguais a zero.
+    dados["preco_ou_quantidade_zero"] = (
+            dados["preco_unitario"].eq(0)
+            | dados["quantidade"].eq(0)
+    )
+
+    # Sinaliza os quatro casos investigados, sem excluir registros.
+    dados["preco_e_quantidade_zero"] = (
+            dados["preco_unitario"].eq(0)
+            & dados["quantidade"].eq(0)
+    )
+
+    print("Transformacao concluida.")
     print("Quantidade de linhas:", len(dados))
     print("Quantidade de colunas:", len(dados.columns))
-    print("Colunas encontradas:")
-    print(list(dados.columns))
+    print(
+        "Registros com preco ou quantidade zero:",
+        int(dados["preco_ou_quantidade_zero"].sum())
+    )
+    print(
+        "Registros com preco e quantidade zero:",
+        int(dados["preco_e_quantidade_zero"].sum())
+    )
 
     return dados

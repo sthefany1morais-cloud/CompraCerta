@@ -57,20 +57,19 @@ GROUP BY criterio_julgamento
 ORDER BY total_itens DESC;
 
 -- 6. Quantidade de itens por estado
-SELECT
-l.estado,
-COUNT(*) AS total_itens
-FROM core.item_compra AS i
-JOIN core.compra AS c
-ON c.id_compra = i.id_compra
-JOIN core.unidade_compradora AS u
-ON u.id_unidade_compradora = (
-SELECT u2.id_unidade_compradora
-FROM core.unidade_compradora AS u2
-WHERE u2.id_orgao IS NOT NULL
-LIMIT 1
+WITH origem_por_item AS (
+    SELECT
+        id_item_compra,
+        MIN(estado) AS estado
+    FROM staging.material_original
+    WHERE id_item_compra IS NOT NULL
+    GROUP BY id_item_compra
 )
-JOIN core.localidade AS l
-ON l.id_localidade = u.id_localidade
-GROUP BY l.estado
+SELECT
+    o.estado,
+    COUNT(*) AS total_itens
+FROM core.item_compra AS i
+JOIN origem_por_item AS o
+    ON o.id_item_compra = i.id_item_compra
+GROUP BY o.estado
 ORDER BY total_itens DESC;

@@ -255,3 +255,16 @@ Foram realizadas consultas de verificação de correspondência entre as tabelas
 Nas verificações realizadas, todos os itens de compra encontraram correspondência nas tabelas de fornecedores e catálogo. Da mesma forma, não foram encontradas referências inválidas a órgãos ou localidades nas unidades compradoras que possuíam esses identificadores preenchidos.
 
 Esses resultados indicam consistência nas correspondências verificadas. Eles não substituem a conferência das restrições de chave estrangeira efetivamente cadastradas no PostgreSQL.
+
+### 20. Investigação de possíveis duplicidades no catálogo
+
+Foi identificada uma descrição idêntica associada a dois códigos diferentes no catálogo de itens:
+
+* **Código 633085:** associado a 1 item de compra.
+* **Código 633086:** associado a 10 itens de compra.
+
+Os dois registros apresentam a mesma descrição — *ESPONJA LIMPEZA, MATERIAL: LÃ AÇO, FORMATO: CIRCULAR, ABRASIVIDADE: LEVE* — e compartilham os mesmos códigos de classificação: grupo 79, classe 7920 e PDM 7042.
+
+**Análise:** a igualdade das descrições e das classificações indica um forte candidato a duplicidade cadastral. Entretanto, não é possível concluir apenas com esses dados que os registros devam ser unificados.
+
+**Tratamento adotado:** os dois códigos foram preservados. A ocorrência foi documentada para investigação, evitando a unificação automática de registros sem confirmação de equivalência no catálogo oficial.
